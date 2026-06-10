@@ -27,11 +27,12 @@ SPDX-License-Identifier: MIT
 
 /** @file bsp.c
  ** @brief Implementacion de la abstraccion de hardware de la placa con poncho
-
+*/
 /* === Headers files inclusions ================================================================ */
 
 #include "bsp.h"
 #include "poncho.h"
+#include "board.h"
 
 /* === Macros definitions ====================================================================== */
 
@@ -60,6 +61,8 @@ static void UpdateSegments(uint8_t segments);
 static void UpdateDigits(uint8_t digit);
 
 /* === Private variable definitions ============================================================ */
+
+static struct board_s board = {0};
 
 /* === Public variable definition  ============================================================= */
 
@@ -151,7 +154,7 @@ static void UpdateSegments(uint8_t segments) {
         Chip_GPIO_SetPinState(LPC_GPIO_PORT, SEGMENT_P_GPIO, SEGMENT_P_BIT, false);
     } else {
         Chip_GPIO_SetValue(LPC_GPIO_PORT, SEGMENTS_GPIO, segments & SEGMENTS_MASK);
-        Chip_GPIO_SetPinState(LPC_GPIO_PORT, SEGMENT_P_GPIO, SEGMENT_P_BIT, (segments & SEGMENT_P);
+        Chip_GPIO_SetPinState(LPC_GPIO_PORT, SEGMENT_P_GPIO, SEGMENT_P_BIT, (segments & SEGMENT_P));
     }
 }
 
@@ -176,11 +179,11 @@ board_t BoardCreate(void) {
     return &board;
 }
 
-void SisTick_Init(uint16_t ticks) {
+void SysTick_Init(uint16_t ticks) {
     __asm volatile("cpsid i");
 
-    SystemCoreCLockUpdate();
-    SysTicik_Config(SystemCoreClock / ticks);
+    SystemCoreClockUpdate();
+    SysTick_Config(SystemCoreClock / ticks);
     NVIC_SetPriority(SysTick_IRQn, (1 << __NVIC_PRIO_BITS) - 1);
 }
 /* === End of documentation ==================================================================== */

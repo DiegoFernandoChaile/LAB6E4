@@ -34,6 +34,11 @@ SPDX-License-Identifier: MIT
 
 /* === Headers files inclusions ==================================================================================== */
 
+#include <stdint.h>
+#include <stdbool.h>
+#include "screen.h"
+#include "digital.h"
+
 /* === Header for C++ compatibility ================================================================================ */
 
 #ifdef __cplusplus
@@ -68,7 +73,7 @@ board_t BoardCreate(void);
 /** @brief Inicializa el temporizador SysTick del nucleo
  ** @param ticks Número de ticks para la inicialización
  **/
-void SisTick_Init(uint16_t ticks);
+void SysTick_Init(uint16_t ticks);
 
 /* === End of conditional blocks =================================================================================== */
 

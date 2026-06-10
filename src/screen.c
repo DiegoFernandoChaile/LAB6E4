@@ -33,7 +33,6 @@ SPDX-License-Identifier: MIT
 
 #include "screen.h"
 #include "chip.h"
-#include <stdlib.h>
 #include <string.h>
 
 /* === Macros definitions ====================================================================== */
@@ -47,7 +46,7 @@ SPDX-License-Identifier: MIT
 struct display_s {
     uint8_t digits;
     uint8_t active_digit;
-    uint8_t flashing_form;
+    uint8_t flashing_from;
     uint8_t flashing_to;
     uint16_t flashing_frecuency;
     uint16_t flashing_count;

@@ -31,7 +31,7 @@ SPDX-License-Identifier: MIT
 
 /* === Headers files inclusions ================================================================ */
 
-#include "main.h"
+#include "bsp.h"
 
 /* === Macros definitions ====================================================================== */
 
@@ -50,11 +50,11 @@ static board_t board;
 /* === Public function implementation ========================================================== */
 
 int main(void) {
-    uint8_t entrada[4] = {4, 2, 3, 1};
+    uint8_t entrada[4] = {5, 2, 3, 1};
     uint16_t frecuencia = 0;
 
     board = BoardCreate();
-    DsiplayWriteBCD(board->display, entrada, sizeof(entrada));
+    DisplayWriteBCD(board->display, entrada, sizeof(entrada));
     while (true) {
         if (DigitalInputHasChanged(board->accept)){
             if (frecuencia == 0) {
@@ -64,7 +64,7 @@ int main(void) {
             } else {
                 frecuencia = 0;
             }
-            DisplayFlashDigits(board->dispplay, 0, 3, frecuencia);
+            DisplayFlashDigits(board->display, 0, 3, frecuencia);
         }
 
         if (DigitalInputHasActivated(board->cancel)){
@@ -91,8 +91,8 @@ int main(void) {
             DisplayWriteBCD(board->display, entrada, sizeof(entrada));
         }
 
-        for (int index = 0; index < 50; indexz++) {
-            for (int delay = 0; delay < 1000000; delay++){
+        for (int index = 0; index < 50; index++) {
+            for (int delay = 0; delay < 10000; delay++){
                 __asm("NOP");
             }
             DisplayRefresh(board->display);
