@@ -31,6 +31,10 @@ SPDX-License-Identifier: MIT
 
 /* === Headers files inclusions ================================================================ */
 
+#ifndef EDU_CIAA_NXP
+#error "This program can only be compiled for the EDU-CIAA-NXP board"
+#endif
+
 #include "bsp.h"
 #include "digital.h"
 #include "screen.h"
