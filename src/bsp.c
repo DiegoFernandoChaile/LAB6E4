@@ -124,7 +124,7 @@ static void SegmentsInit(void) {
 
 static void BuzzerInit(void) {
     Chip_SCU_PinMuxSet(BUZZER_PORT, BUZZER_PIN, SCU_MODE_INBUFF_EN | SCU_MODE_INACT | BUZZER_FUNC);
-    board.buzzer = DigitalOutputCreate(BUZZER_GPIO, BUZZER_BIT, true);
+    board.buzzer = DigitalOutputCreate(BUZZER_GPIO, BUZZER_BIT, false);
 }
 
 static void KeysInit(void) {

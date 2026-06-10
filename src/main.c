@@ -32,6 +32,9 @@ SPDX-License-Identifier: MIT
 /* === Headers files inclusions ================================================================ */
 
 #include "bsp.h"
+#include "digital.h"
+#include "screen.h"
+#include <stdbool.h>
 
 /* === Macros definitions ====================================================================== */
 
@@ -50,7 +53,7 @@ static board_t board;
 /* === Public function implementation ========================================================== */
 
 int main(void) {
-    uint8_t entrada[4] = {5, 2, 3, 1};
+    uint8_t entrada[4] = {7, 8, 9, 4};
     uint16_t frecuencia = 0;
 
     board = BoardCreate();
